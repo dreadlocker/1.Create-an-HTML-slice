@@ -180,7 +180,10 @@ export default {
     display: flex
     justify-content: center
     margin: 0 64px
-
+@media (min-width: $pc-width-1440-start)
+  .holder
+    max-width: 1440px
+    margin: auto
 @media (min-width: $mobile-width-start) and (max-width: $tablet-width-end)
   .header-content-holder
     margin-top: $margin-top-3
