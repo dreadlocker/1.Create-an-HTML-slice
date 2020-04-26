@@ -1,20 +1,21 @@
 <template>
   <div class="content-holder">
-    <div v-for="(src, index) in iconsSrcArray" :key="index" class="content-window">
+    <div v-for="(src, index) in featureIconsSrcArray" :key="index" class="content-window">
       <ContentImage
-        v-if="renderIcons"
+        v-if="featureIconsSrcArray.length < 9"
         :src="src"
-        :index="index"
-        :iconsSrcArray="iconsSrcArray"
-        :svgClasses="svgClasses"
+        :featureIconClasses="featureIconClasses"
       />
 
-      <div v-if="renderTitles" :class="contentTitleClasses">{{titlesArray[index]}}</div>
+      <ContentTitle
+        :title="featureTitlesArray[index]"
+        :featureTitleClasses="featureTitleClasses"
+      />
 
       <ContentInfo
-        :infosArray="infosArray"
-        :index="index"
-        :infosClasses="infosClasses"
+        :textOrArray="featureBodyTextArray[index]"
+        :featureBodyTextClasses="featureBodyTextClasses"
+        :addExtraClass="index < featureBodyTextArray.length - 1"
       />
     </div>
   </div>
@@ -23,48 +24,37 @@
 <script>
 import ContentImage from "./ContentImage.vue";
 import ContentInfo from "./ContentInfo.vue";
+import ContentTitle from "./ContentTitle.vue";
 
 export default {
   name: "Content",
   components: {
     ContentImage,
-    ContentInfo
+    ContentInfo,
+    ContentTitle
   },
   props: {
-    renderIcons: {
-      type: Boolean,
-      required: true
-    },
-    iconsSrcArray: {
+    featureIconsSrcArray: {
       type: Array,
-      required: true
+      validator: (arr) => arr.length >= 2
     },
-    svgClasses: {
+    featureIconClasses: {
       type: String,
-      required: true
     },
-    renderTitles: {
-      type: Boolean,
-      required: true
-    },
-    titlesArray: {
+    featureTitlesArray: {
       type: Array,
-      required: true
+      validator: (arr) => arr.length >= 2
     },
-    contentTitleClasses: {
+    featureTitleClasses: {
       type: String,
-      required: true
     },
-    infosArray: {
+    featureBodyTextArray: {
       type: Array,
-      required: true
+      required: true,
+      validator: (arr) => arr.length >= 2
     },
-    infosClasses: {
+    featureBodyTextClasses: {
       type: String,
-      required: true
-    },
-    screenWidth: {
-      type: Number,
       required: true
     }
   }
@@ -109,13 +99,4 @@ export default {
     width: $content-window-pc-1440-width
   .content-window
     width: $content-window-pc-1440-width
-  
-.title
-  width: inherit
-  height: $mobile-height-1
-  padding-top: $content-padding-top-2
-  font-size: $font-size-1
-  line-height: $line-height-1
-  color: $text-color
-  font-weight: $font-weight-bold
 </style>

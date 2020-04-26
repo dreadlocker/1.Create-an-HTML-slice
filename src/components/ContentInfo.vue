@@ -1,12 +1,12 @@
 <template>
-  <div :class="[{'info-padding': index < infosArray.length - 1}, infosClasses]">
-    <span v-if="typeof infosArray[index] === 'string'">{{infosArray[index]}}</span>
+  <div :class="[{'feature-body-text-padding': addExtraClass}, featureBodyTextClasses]">
+    <span v-if="typeof textOrArray === 'string'">{{textOrArray}}</span>
     <span
       v-else
-      v-for="(obj, index) in infosArray[index]"
+      v-for="(obj, index) in textOrArray"
       :key="index"
       :class="{[obj.className]: obj.className}"
-    >{{obj[`text${index+1}`]}}</span>
+    >{{obj["text"]}}</span>
   </div>
 </template>
 
@@ -14,16 +14,26 @@
 export default {
   name: "ContentInfo",
   props: {
-    infosArray: {
-      type: Array,
-      required: true
+    textOrArray: {
+      type: [String, Array],
+      required: true,
+      validator: (el) => {
+        if(typeof el === "string" && el.length >= 60 && el.length <= 200) {
+          return true;
+        }
+        if(Array.isArray(el)) {
+          const textLength = el.map(obj => obj["text"].length).reduce((a, b) => a + b, 0);
+          return textLength >= 60 && textLength <= 200;
+        }
+        return false;
+      }
     },
-    index: {
-      type: Number,
-      required: true
-    },
-    infosClasses: {
+    featureBodyTextClasses: {
       type: String,
+      required: true
+    },
+    addExtraClass: {
+      type: Boolean,
       required: true
     }
   }
@@ -33,14 +43,14 @@ export default {
 <style scoped lang="sass">
 @import "@/assets/vars.sass"
 
-.info
+.feature-body-text
   width: inherit
   font-style: $font-style-normal
   font-weight: $font-weight-normal
   font-size: $font-size-1
   line-height: $line-height-1
   color: rgba(36, 49, 67, 0.9)
-.info-padding
+.feature-body-text-padding
   padding: $content-padding-top-1 0 $content-padding-bottom-1
 .colored
   color: $text-color-2

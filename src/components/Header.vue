@@ -1,14 +1,14 @@
 <template>
   <div class="header-holder">
-    <div :class="textClasses">{{text}}</div>
-    <div :class="titleClasses">{{title}}</div>
-    <div :class="lastUpdatedClasses">{{lastUpdated}}</div>
-    <div :class="subTitleClasses">{{subTitle}}</div>
+    <div v-if="groupDescriptorClasses" :class="groupDescriptorClasses">{{groupDescriptor}}</div>
+    <div :class="sliceTitleClasses">{{sliceTitle}}</div>
+    <div :class="sliceDescriptorClasses">{{sliceDescriptor}}</div>
+    <div :class="sliceLeadClasses">{{sliceLead}}</div>
     
     <Footer
       v-if="screenWidth >= 1024"
-      :footerText="footerText"
-      :footerClasses="footerClasses"
+      :sliceLink="sliceLink"
+      :sliceLinkClasses="sliceLinkClasses"
     />
   </div>
 </template>
@@ -22,37 +22,35 @@ export default {
     Footer
   },
   props: {
-    text: {
+    groupDescriptor: {
+      type: String,
+      validator: (str) => str.length <= 30
+    },
+    groupDescriptorClasses: {
+      type: String,
+    },
+    sliceTitle: {
+      type: String,
+      required: true,
+      validator: (str) => str.length >= 30 && str.length <= 80
+    },
+    sliceTitleClasses: {
       type: String,
       required: true
     },
-    textClasses: {
+    sliceDescriptor: {
       type: String,
-      required: true
+      validator: (str) => str.length <= 30
     },
-    title: {
+    sliceDescriptorClasses: {
       type: String,
-      required: true
     },
-    titleClasses: {
+    sliceLead: {
       type: String,
-      required: true
+      validator: (str) => str.length >= 60 && str.length <= 200
     },
-    lastUpdated: {
+    sliceLeadClasses: {
       type: String,
-      required: true
-    },
-    lastUpdatedClasses: {
-      type: String,
-      required: true
-    },
-    subTitle: {
-      type: String,
-      required: true
-    },
-    subTitleClasses: {
-      type: String,
-      required: true
     },
     screenWidth: {
       type: Number,
@@ -61,8 +59,8 @@ export default {
   },
   data() {
     return {
-      footerText: "Learn More",
-      footerClasses: "footer-holder",
+      sliceLink: "Learn More",
+      sliceLinkClasses: "slice-link",
     };
   }
 };
@@ -84,7 +82,7 @@ export default {
   .header-holder
     width: $content-window-pc-1440-width
 
-.top-text
+.group-descriptor
   width: inherit
   height: $mobile-height-1
   font-size: $font-size-1
@@ -94,30 +92,30 @@ export default {
   color: rgba(36, 49, 67, 0.6)
   mix-blend-mode: $mix-blend-mode-normal
 
-.title
+.slice-title
   font-size: $font-size-3
   line-height: $line-height-2
   color: $text-color
   padding-top: $padding-top-1
 @media (min-width: $mobile-width-start) and (max-width: $mobile-width-end)
-  .title
+  .slice-title
     height: $mobile-height-2
 @media (min-width: $tablet-width-start) and (max-width: $tablet-width-end)
-  .title
+  .slice-title
     width: $tablet-width
     height: $tablet-height-1
 
-.bottom-text
+.slice-descriptor
   font-size: $font-size-1
   line-height: $line-height-1
   color: $text-color-3
   mix-blend-mode: $mix-blend-mode-normal
   padding-top: $padding-top-1
 @media (min-width: $mobile-width-start) and (max-width: $mobile-width-end)
-  .bottom-text
+  .slice-descriptor
     height: $mobile-height-1
 @media (min-width: $tablet-width-start) and (max-width: $tablet-width-end)
-  .bottom-text
+  .slice-descriptor
     width: $tablet-width
     height: $mobile-height-1
 

@@ -1,6 +1,6 @@
 <template>
   <div :class="[{'relative': isExclusive}]">
-    <GetSvg :src="getImageSrc" :svgClasses="svgClasses" />
+    <GetSvg :src="getImageSrc" :featureIconClasses="featureIconClasses" />
     <div v-if="isExclusive" :class="isExclusive">{{isExclusive}}</div>
   </div>
 </template>
@@ -16,28 +16,19 @@ export default {
   props: {
     src: {
       type: [String, Array],
-      required: true
+      validator: (el) => (typeof el === "string") || (Array.isArray(el) && el[1].length <= 25)
     },
-    index: {
-      type: Number,
-      required: true
-    },
-    iconsSrcArray: {
-      type: Array,
-      required: true
-    },
-    svgClasses: {
+    featureIconClasses: {
       type: String,
-      required: true
     }
   },
   computed: {
     getImageSrc() {
-      return typeof this.iconsSrcArray[this.index] === "string" ? this.iconsSrcArray[this.index] : this.iconsSrcArray[this.index][0];
+      return typeof this.src === "string" ? this.src : this.src[0];
     },
     isExclusive() {
-      return (Array.isArray(this.iconsSrcArray[this.index]))
-        ? this.iconsSrcArray[this.index][1]
+      return (Array.isArray(this.src))
+        ? this.src[1]
         : null;
     }
   }

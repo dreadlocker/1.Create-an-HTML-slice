@@ -1,5 +1,5 @@
 <template>
-  <img :src="getImage" :class="svgClasses">
+  <img :src="getImage" :class="featureIconClasses">
 </template>
 
 <script>
@@ -8,11 +8,9 @@ export default {
   props: {
     src: {
       type: String,
-      required: true
     },
-    svgClasses: {
+    featureIconClasses: {
       type: String,
-      required: true
     }
   },
   computed: {
@@ -24,7 +22,7 @@ export default {
 </script>
 
 <style scoped lang="sass">
-.svg
+.feature-icon
   border: 3px dashed #b5b5b5
   border-radius: 3px
 </style>
