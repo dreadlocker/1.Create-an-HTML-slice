@@ -192,7 +192,7 @@ export default {
     margin: auto
 @media (min-width: $mobile-width-start) and (max-width: $tablet-width-end)
   .header-content-holder
-    margin-top: $margin-top-3
+    padding-top: $padding-top-3
 @media (min-width: $pc-width-1024-start)
   .header-content-holder
     width: 100%

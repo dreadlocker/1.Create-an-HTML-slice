@@ -34,7 +34,7 @@ export default {
   color: $text-color-2
 @media (min-width: $mobile-width-start) and (max-width: $tablet-width-end)
   .footer-holder
-    margin: 56px 0 80px
+    padding-bottom: 80px
 @media (min-width: $pc-width-1024-start)
   .footer-holder
     position: absolute

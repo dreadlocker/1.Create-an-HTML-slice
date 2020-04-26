@@ -98,7 +98,7 @@ export default {
   font-size: $font-size-3
   line-height: $line-height-2
   color: $text-color
-  margin-top: $margin-top-1
+  padding-top: $padding-top-1
 @media (min-width: $mobile-width-start) and (max-width: $mobile-width-end)
   .title
     width: $mobile-width
@@ -113,7 +113,7 @@ export default {
   line-height: $line-height-1
   color: $text-color-3
   mix-blend-mode: $mix-blend-mode-normal
-  margin-top: $margin-top-1
+  padding-top: $padding-top-1
 @media (min-width: $mobile-width-start) and (max-width: $mobile-width-end)
   .bottom-text
     width: $mobile-width
@@ -129,7 +129,7 @@ export default {
   font-weight: $font-weight-normal
   line-height: $line-height-1
   color: $text-color
-  margin-top: $margin-top-2
+  padding-top: $padding-top-2
 @media (min-width: $mobile-width-start) and (max-width: $mobile-width-end)
   .sub-title
     width: $mobile-width

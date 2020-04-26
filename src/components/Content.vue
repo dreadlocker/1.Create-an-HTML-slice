@@ -75,13 +75,14 @@ export default {
 @import "@/assets/vars.sass"
 
 @media (min-width: $mobile-width-start) and (max-width: $tablet-width-end)
-  .content-window
-    margin-top: 59px
   .content-holder
     width: 100%
     display: flex
     flex-wrap: wrap
     justify-content: space-between
+    padding-top: 40px
+  .content-window
+    // margin-top: 59px
 
 @media (min-width: $pc-width-1024-start)
   .content-holder
@@ -116,7 +117,7 @@ export default {
 .title
   width: inherit
   height: $mobile-height-1
-  margin-top: $content-margin-top-2
+  padding-top: $content-padding-top-2
   font-size: $font-size-1
   line-height: $line-height-1
   color: $text-color

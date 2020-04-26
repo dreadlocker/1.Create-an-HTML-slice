@@ -35,7 +35,7 @@ export default {
 
 .info
   width: inherit
-  margin-top: $content-margin-top-1
+  padding: $content-padding-top-1 0 $content-padding-bottom-1
   font-style: $font-style-normal
   font-weight: $font-weight-normal
   font-size: $font-size-1
