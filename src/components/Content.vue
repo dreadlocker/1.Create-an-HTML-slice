@@ -2,13 +2,14 @@
   <div class="content-holder">
     <div v-for="(src, index) in iconsSrcArray" :key="index" class="content-window">
       <ContentImage
+        v-if="renderIcons"
         :src="src"
         :index="index"
         :iconsSrcArray="iconsSrcArray"
         :svgClasses="svgClasses"
       />
 
-      <div :class="contentTitleClasses">{{titlesArray[index]}}</div>
+      <div v-if="renderTitles" :class="contentTitleClasses">{{titlesArray[index]}}</div>
 
       <ContentInfo
         :infosArray="infosArray"
@@ -30,12 +31,20 @@ export default {
     ContentInfo
   },
   props: {
+    renderIcons: {
+      type: Boolean,
+      required: true
+    },
     iconsSrcArray: {
       type: Array,
       required: true
     },
     svgClasses: {
       type: String,
+      required: true
+    },
+    renderTitles: {
+      type: Boolean,
       required: true
     },
     titlesArray: {

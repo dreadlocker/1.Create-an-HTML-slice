@@ -15,8 +15,10 @@
       
       <template v-if="screenWidth < 1024">
         <Content
+          :renderIcons="true"
           :iconsSrcArray="iconsSrcArray"
           :svgClasses="'svg'"
+          :renderTitles="true"
           :titlesArray="titlesArray"
           :contentTitleClasses="contentTitleClasses"
           :infosArray="infosArray"
@@ -27,8 +29,10 @@
       
       <template v-else>
         <Content
+          :renderIcons="true"
           :iconsSrcArray="iconsSrcArrayForColumn1"
           :svgClasses="'svg'"
+          :renderTitles="true"
           :titlesArray="titlesArrayForColumn1"
           :contentTitleClasses="contentTitleClasses"
           :infosArray="infosArrayForColumn1"
@@ -36,8 +40,10 @@
           :screenWidth="screenWidth"
         />
         <Content
+          :renderIcons="true"
           :iconsSrcArray="iconsSrcArrayForColumn2"
           :svgClasses="'svg'"
+          :renderTitles="true"
           :titlesArray="titlesArrayForColumn2"
           :contentTitleClasses="contentTitleClasses"
           :infosArray="infosArrayForColumn2"
