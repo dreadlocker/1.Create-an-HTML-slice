@@ -1,5 +1,5 @@
 <template>
-  <div :class="infosClasses">
+  <div :class="[{'info-padding': index < infosArray.length - 1}, infosClasses]">
     <span v-if="typeof infosArray[index] === 'string'">{{infosArray[index]}}</span>
     <span
       v-else
@@ -35,12 +35,13 @@ export default {
 
 .info
   width: inherit
-  padding: $content-padding-top-1 0 $content-padding-bottom-1
   font-style: $font-style-normal
   font-weight: $font-weight-normal
   font-size: $font-size-1
   line-height: $line-height-1
   color: rgba(36, 49, 67, 0.9)
+.info-padding
+  padding: $content-padding-top-1 0 $content-padding-bottom-1
 .colored
   color: $text-color-2
 </style>

@@ -101,7 +101,6 @@ export default {
   padding-top: $padding-top-1
 @media (min-width: $mobile-width-start) and (max-width: $mobile-width-end)
   .title
-    width: $mobile-width
     height: $mobile-height-2
 @media (min-width: $tablet-width-start) and (max-width: $tablet-width-end)
   .title
@@ -116,7 +115,6 @@ export default {
   padding-top: $padding-top-1
 @media (min-width: $mobile-width-start) and (max-width: $mobile-width-end)
   .bottom-text
-    width: $mobile-width
     height: $mobile-height-1
 @media (min-width: $tablet-width-start) and (max-width: $tablet-width-end)
   .bottom-text
@@ -132,7 +130,6 @@ export default {
   padding-top: $padding-top-2
 @media (min-width: $mobile-width-start) and (max-width: $mobile-width-end)
   .sub-title
-    width: $mobile-width
     height: $mobile-height-3
 @media (min-width: $tablet-width-start) and (max-width: $tablet-width-end)
   .sub-title

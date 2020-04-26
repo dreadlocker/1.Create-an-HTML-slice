@@ -81,17 +81,16 @@ export default {
     flex-wrap: wrap
     justify-content: space-between
     padding-top: 40px
-  .content-window
-    // margin-top: 59px
+@media (min-width: $tablet-width-start) and (max-width: $pc-width-1024-end)
+  .content-holder
+    flex-direction: column
+    width: $content-window-tablet-width
 
 @media (min-width: $pc-width-1024-start)
   .content-holder
     display: flex
     flex-wrap: wrap
     justify-content: space-between
-  .content-window
-    &:nth-child(2n), &:nth-child(3n)
-      margin-top: 69px
 @media (min-width: $tablet-width-start) and (max-width: $tablet-width-end)
   .content-window
     width: $content-window-tablet-width
@@ -105,9 +104,6 @@ export default {
     width: $content-window-pc-1280-width
   .content-window
     width: $content-window-pc-1280-width
-@media (min-width: $pc-width-1024-start)
-  .content-holder
-      margin-bottom: 104px
 @media (min-width: $pc-width-1440-start)
   .content-holder
     width: $content-window-pc-1440-width

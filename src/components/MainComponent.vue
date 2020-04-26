@@ -13,7 +13,7 @@
         :screenWidth="screenWidth"
       />
       
-      <template v-if="screenWidth < 1024">
+      <template v-if="screenWidth < 576">
         <Content
           :renderIcons="true"
           :iconsSrcArray="iconsSrcArray"
@@ -25,6 +25,33 @@
           :infosClasses="infosClasses"
           :screenWidth="screenWidth"
         />
+      </template>
+      
+      <template v-else-if="screenWidth >= 576 && screenWidth < 1024">
+        <div class="content-holder-tablet-wrapper">
+          <Content
+            :renderIcons="true"
+            :iconsSrcArray="iconsSrcArrayForColumn1"
+            :svgClasses="'svg'"
+            :renderTitles="true"
+            :titlesArray="titlesArrayForColumn1"
+            :contentTitleClasses="contentTitleClasses"
+            :infosArray="infosArrayForColumn1"
+            :infosClasses="infosClasses"
+            :screenWidth="screenWidth"
+          />
+          <Content
+            :renderIcons="true"
+            :iconsSrcArray="iconsSrcArrayForColumn2"
+            :svgClasses="'svg'"
+            :renderTitles="true"
+            :titlesArray="titlesArrayForColumn2"
+            :contentTitleClasses="contentTitleClasses"
+            :infosArray="infosArrayForColumn2"
+            :infosClasses="infosClasses"
+            :screenWidth="screenWidth"
+          />
+        </div>
       </template>
       
       <template v-else>
@@ -198,5 +225,9 @@ export default {
     width: 100%
     display: flex
     justify-content: space-between
-    margin-top: 88px
+    padding: 88px 0 $content-padding-bottom-2
+
+.content-holder-tablet-wrapper
+  display: flex
+  justify-content: space-between
 </style>
